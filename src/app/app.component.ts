@@ -2,16 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 
-interface Widget {
-  id: number;
-  label: string;
+interface Tenant {
+  tier: string;
+  brand: string;
+  primaryColor: string;
 }
 
-// Micro-Frontend remote: in the connected TD_Microfrontend repo, this
-// build output is embedded live into the React shell via
-// <iframe src="/angular-remote/">. That React shell isn't present in
-// this single-technology repo (see TD_Frontend_reactjs's
-// microfrontend_reactjs<version> branches for the shell itself).
+// White-Label Storefront: Angular serves ENTERPRISE tenants only.
+// Self-serve tenants get the React storefront instead
+// (TD_Frontend_reactjs, same branch name).
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -20,15 +19,17 @@ interface Widget {
   styleUrl: './app.component.css',
 })
 export class AppComponent implements OnInit {
-  title = 'Micro-Frontend Remote (Angular) — standalone';
-  widgets: Widget[] = [{ id: 1, label: 'Standalone Angular widget' }];
+  title = 'White-Label Storefront (Angular, enterprise)';
+  tenant: Tenant | null = null;
 
   constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
-    this.http.get<{ widgets: Widget[] }>('/api/widgets').subscribe({
-      next: (data) => (this.widgets = data.widgets),
-      error: () => {},
-    });
+    this.http
+      .get<Tenant>('/api/tenant-config', { headers: { 'x-tenant-id': 'globex' } })
+      .subscribe({
+        next: (data) => (this.tenant = data),
+        error: () => {},
+      });
   }
 }

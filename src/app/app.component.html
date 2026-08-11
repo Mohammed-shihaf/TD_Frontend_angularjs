@@ -1,4 +1,4 @@
-<h1>{{ title }}</h1>
-<ul>
-  <li *ngFor="let w of widgets">{{ w.label }}</li>
-</ul>
+<div *ngIf="tenant" [style.background]="tenant.primaryColor">
+  <h1 style="color: #fff">{{ tenant.brand }} storefront (Angular, enterprise)</h1>
+</div>
+<p *ngIf="!tenant">Loading tenant…</p>
