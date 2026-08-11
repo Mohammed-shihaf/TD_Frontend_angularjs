@@ -7,11 +7,9 @@ interface Widget {
   label: string;
 }
 
-// Micro-Frontend remote: in the connected TD_Microfrontend repo, this
-// build output is embedded live into the React shell via
-// <iframe src="/angular-remote/">. That React shell isn't present in
-// this single-technology repo (see TD_Frontend_reactjs's
-// microfrontend_reactjs<version> branches for the shell itself).
+// Migration Bridge: this is the LEGACY app, served at /legacy in the
+// connected repo's route-split backend (TD_Backend_nodejs's
+// migrationbridge branches). /app/* serves the new React app instead.
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -20,15 +18,15 @@ interface Widget {
   styleUrl: './app.component.css',
 })
 export class AppComponent implements OnInit {
-  title = 'Micro-Frontend Remote (Angular) — standalone';
-  widgets: Widget[] = [{ id: 1, label: 'Standalone Angular widget' }];
+  title = 'Legacy App (Angular) — served at /legacy';
+  widgets: Widget[] = [];
 
   constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
     this.http.get<{ widgets: Widget[] }>('/api/widgets').subscribe({
       next: (data) => (this.widgets = data.widgets),
-      error: () => {},
+      error: () => (this.widgets = []),
     });
   }
 }
