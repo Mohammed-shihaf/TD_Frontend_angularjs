@@ -1,4 +1,4 @@
-<h1>{{ title }}</h1>
-<ul>
-  <li *ngFor="let w of widgets">{{ w.label }}</li>
-</ul>
+<div *ngIf="tokens" [style.background]="tokens.color.primary" [style.padding]="tokens.spacing.lg">
+  <h1 [style.fontFamily]="tokens.typography.fontFamily">{{ title }}</h1>
+</div>
+<p *ngIf="!tokens">Loading tokens…</p>

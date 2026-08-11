@@ -2,16 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 
-interface Widget {
-  id: number;
-  label: string;
+interface Tokens {
+  color: { primary: string; danger: string; background: string };
+  spacing: { sm: string; md: string; lg: string };
+  typography: { fontFamily: string; baseSize: string };
 }
 
-// Micro-Frontend remote: in the connected TD_Microfrontend repo, this
-// build output is embedded live into the React shell via
-// <iframe src="/angular-remote/">. That React shell isn't present in
-// this single-technology repo (see TD_Frontend_reactjs's
-// microfrontend_reactjs<version> branches for the shell itself).
+// Design-System Test Harness: fetches the same /api/design-tokens the
+// React frontend consumes (TD_Frontend_reactjs, same branch name);
+// the two renders are parity-tested against each other.
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -20,14 +19,14 @@ interface Widget {
   styleUrl: './app.component.css',
 })
 export class AppComponent implements OnInit {
-  title = 'Micro-Frontend Remote (Angular) — standalone';
-  widgets: Widget[] = [{ id: 1, label: 'Standalone Angular widget' }];
+  title = 'Design-System Harness (Angular)';
+  tokens: Tokens | null = null;
 
   constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
-    this.http.get<{ widgets: Widget[] }>('/api/widgets').subscribe({
-      next: (data) => (this.widgets = data.widgets),
+    this.http.get<Tokens>('/api/design-tokens').subscribe({
+      next: (data) => (this.tokens = data),
       error: () => {},
     });
   }

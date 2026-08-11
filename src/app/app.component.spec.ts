@@ -3,9 +3,7 @@ import { AppComponent } from './app.component';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [AppComponent],
-    }).compileComponents();
+    await TestBed.configureTestingModule({ imports: [AppComponent] }).compileComponents();
   });
 
   it('should create the app', () => {
@@ -13,8 +11,8 @@ describe('AppComponent', () => {
     expect(fixture.componentInstance).toBeTruthy();
   });
 
-  it('should have the microfrontend remote title', () => {
+  it('should have the design-system harness title', () => {
     const fixture = TestBed.createComponent(AppComponent);
-    expect(fixture.componentInstance.title).toEqual('Micro-Frontend Remote (Angular) — standalone');
+    expect(fixture.componentInstance.title).toEqual('Design-System Harness (Angular)');
   });
 });
