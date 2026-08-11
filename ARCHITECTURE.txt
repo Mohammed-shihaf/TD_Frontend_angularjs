@@ -4,7 +4,7 @@ PROJECT TYPE: Framework Migration Bridge (standalone frontend module)
 BUILD COMMANDS
 ==============
 npm install
-npx ng build     # real Angular build, verified passing (Angular 22)
+npx ng build     # real Angular build, verified passing (Angular 17)
 npx ng test --watch=false --browsers=ChromeHeadless   # real karma test suite, verified passing
 
 ARCHITECTURE
