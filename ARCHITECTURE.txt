@@ -1,22 +1,9 @@
-PROJECT TYPE: Micro-Frontend Platform (standalone frontend module)
-(extracted from the connected TD_Microfrontend_BE_nodejs_FE_reactjs_FE_angularjs repo)
+Project Type: E-commerce Storefront Application
+Taxonomy Category: ecommerce_angularjs18
+Build Tool: Angular CLI (v18)
 
-BUILD COMMANDS
-==============
-npm install
-npx ng build     # real Angular build, verified passing (Angular 22)
-npx ng test --watch=false --browsers=ChromeHeadless   # real karma test suite, verified passing
-
-ARCHITECTURE
-============
-This is the Angular remote of the Micro-Frontend Platform, standalone.
-In the connected repo its build output is embedded live into the
-React shell via <iframe src="/angular-remote/">; that React shell
-isn't present in this single-technology repo (see TD_Frontend_reactjs's
-microfrontend_reactjs<version> branches for the shell itself).
-
-  src/app/app.component.ts    real Angular component fetching /api/widgets
-  src/app/app.component.spec.ts  karma test suite
-  quality/                     21 real TypeScript code-quality tool fixtures
-
-Branches: microfrontend_angularjs<16|17|18|19>
+Architectural Overview:
+This application implements an interactive E-commerce storefront architecture using Angular 18 features and reactive state management.
+- Reactive State Management: Utilizes `CartService` powered by RxJS `BehaviorSubject` streams to manage shopping cart items, total quantities, and running order subtotals dynamically across components.
+- Product Catalog Component (`ProductListComponent`): Displays a structured product list rendered from strongly-typed models, with direct integration to add items to the shared cart.
+- Cart View Component (`CartComponent`): Renders live cart item quantities, calculated totals, and supports item removal or emptying the cart using async pipe subscriptions.

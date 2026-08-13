@@ -1,4 +1,15 @@
-<h1>{{ title }}</h1>
-<ul>
-  <li *ngFor="let w of widgets">{{ w.label }}</li>
-</ul>
+<div class="storefront-container" style="padding: 24px; max-width: 1200px; margin: 0 auto; font-family: sans-serif;">
+  <header style="border-bottom: 2px solid #1976d2; margin-bottom: 24px; padding-bottom: 12px;">
+    <h1 style="margin: 0; color: #1976d2;">{{ title }}</h1>
+  </header>
+
+  <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 24px;">
+    <main>
+      <app-product-list></app-product-list>
+    </main>
+
+    <aside>
+      <app-cart></app-cart>
+    </aside>
+  </div>
+</div>
