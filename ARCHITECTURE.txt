@@ -1,22 +1,10 @@
-PROJECT TYPE: Micro-Frontend Platform (standalone frontend module)
-(extracted from the connected TD_Microfrontend_BE_nodejs_FE_reactjs_FE_angularjs repo)
+Project Type: Admin Dashboard Application
+Taxonomy Category: admindashboard_angularjs18
+Build Tool: Angular CLI (v18)
 
-BUILD COMMANDS
-==============
-npm install
-npx ng build     # real Angular build, verified passing (Angular 22)
-npx ng test --watch=false --browsers=ChromeHeadless   # real karma test suite, verified passing
-
-ARCHITECTURE
-============
-This is the Angular remote of the Micro-Frontend Platform, standalone.
-In the connected repo its build output is embedded live into the
-React shell via <iframe src="/angular-remote/">; that React shell
-isn't present in this single-technology repo (see TD_Frontend_reactjs's
-microfrontend_reactjs<version> branches for the shell itself).
-
-  src/app/app.component.ts    real Angular component fetching /api/widgets
-  src/app/app.component.spec.ts  karma test suite
-  quality/                     21 real TypeScript code-quality tool fixtures
-
-Branches: microfrontend_angularjs<16|17|18|19>
+Architectural Overview:
+This project implements a complete Admin Dashboard template using Angular 18 and Angular Material (@angular/material).
+- Integrated Component Suite: Built using Angular Material components including `MatToolbar`, `MatSidenav`, `MatCard`, and `MatTable`.
+- Responsive Shell: Implements a persistent side navigation drawer coupled with a top header toolbar to provide a cohesive admin UI.
+- Data Presentation: Features a typed MatTable rendering structured user administration records with mock status and activity tracking.
+- Animation & Theme Support: Powered by Angular Browser Animations (`provideAnimations()`) and prebuilt Indigo-Pink theme styling.
