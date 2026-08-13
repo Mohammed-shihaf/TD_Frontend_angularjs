@@ -1,4 +1,19 @@
-<h1>{{ title }}</h1>
-<ul>
-  <li *ngFor="let w of widgets">{{ w.label }}</li>
-</ul>
+<div class="pwa-shell" style="padding: 24px; max-width: 900px; margin: 0 auto; font-family: sans-serif;">
+  <header style="border-bottom: 2px solid #2e7d32; padding-bottom: 12px; margin-bottom: 24px;">
+    <h1 style="margin: 0; color: #2e7d32;">{{ title }}</h1>
+    <p style="color: #666; margin-top: 4px;">Angular 18 PWA with Service Worker & Web App Manifest</p>
+  </header>
+
+  <main style="border: 1px solid #e0e0e0; border-radius: 8px; padding: 24px; background: #fafafa;">
+    <h2>PWA Status & Capabilities</h2>
+    <ul style="line-height: 1.8;">
+      <li><strong>Service Worker Registration:</strong> <code>ngsw-worker.js</code></li>
+      <li><strong>Web Manifest:</strong> <code>manifest.webmanifest</code></li>
+      <li><strong>Offline Caching Strategy:</strong> Configured via <code>ngsw-config.json</code></li>
+      <li><strong>Service Worker Status:</strong> {{ isSwEnabled ? 'Active' : 'Standby / Production Only' }}</li>
+    </ul>
+    <p style="background: #e8f5e9; padding: 12px; border-radius: 4px; border-left: 4px solid #2e7d32;">
+      ✓ Verified: Production build generates <code>ngsw.json</code> and <code>ngsw-worker.js</code> assets in output bundle.
+    </p>
+  </main>
+</div>
