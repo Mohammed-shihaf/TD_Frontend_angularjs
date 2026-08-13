@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CartService } from './cart.service';
 
@@ -43,11 +43,11 @@ import { CartService } from './cart.service';
   `]
 })
 export class CartComponent {
+  private cartService = inject(CartService);
+
   items$ = this.cartService.cartItems$;
   totalItems$ = this.cartService.totalItems$;
   totalPrice$ = this.cartService.totalPrice$;
-
-  constructor(private cartService: CartService) {}
 
   removeItem(productId: number): void {
     this.cartService.removeFromCart(productId);
