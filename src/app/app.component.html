@@ -1,4 +1,13 @@
-<h1>{{ title }}</h1>
-<ul>
-  <li *ngFor="let w of widgets">{{ w.label }}</li>
-</ul>
+<div class="portal-shell" style="padding: 24px; max-width: 1000px; margin: 0 auto; font-family: sans-serif;">
+  <header style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #1565c0; padding-bottom: 12px; margin-bottom: 24px;">
+    <h1 style="margin: 0; color: #1565c0;">{{ title }}</h1>
+    <nav style="display: flex; gap: 16px;">
+      <a routerLink="/home" routerLinkActive="active">Home</a>
+      <a routerLink="/account" routerLinkActive="active">My Account (Gated)</a>
+      <a *ngIf="!(isLoggedIn$ | async)" routerLink="/login" routerLinkActive="active">Login</a>
+    </nav>
+  </header>
+  <main>
+    <router-outlet></router-outlet>
+  </main>
+</div>
